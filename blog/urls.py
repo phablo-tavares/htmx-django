@@ -18,6 +18,8 @@ urlpatterns = [
     path('atualizar-pessoa', views.salvarPessoa, name='atualizar-pessoa'),
     path('deletar-pessoa/<int:pk>', views.deletarPessoa, name='deletar-pessoa'),
 
+    path('filtrar-dados-tabela', views.filtrarDadosTabela),
+
     path('token', TokenObtainPairView.as_view()),
     path('token/refresh', TokenRefreshView.as_view()),
 ]

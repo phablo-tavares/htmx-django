@@ -1,0 +1,71 @@
+<form>
+  <div class="row">
+    <div class="col-4 col-md-3">
+      <label for="filtro-nome">Nome</label>
+      <input
+        class="form-control"
+        type="text"
+        name="filtro-nome"
+        id="filtro-nome"
+        oninput="setTimeout(submitFiltroForm('{{csrf_token}}'),2000)"
+      />
+    </div>
+    <div class="col-4 col-md-3">
+      <label for="filtro-cpf">CPF</label>
+      <input
+        class="form-control"
+        type="number"
+        name="filtro-cpf"
+        id="filtro-cpf"
+        min="1"
+        step="1"
+        oninput="setTimeout(submitFiltroForm('{{csrf_token}}'),2000)"
+      />
+    </div>
+    <div class="col-4 col-md-3">
+      <label for="filtro-data-nascimento">Data de Nascimento</label>
+      <input
+        class="form-control"
+        type="date"
+        name="filtro-data-nascimento"
+        id="filtro-data-nascimento"
+        oninput="submitFiltroForm('{{csrf_token}}')"
+      />
+    </div>
+    <div class="col-4 col-md-3">
+      <label for="filtro-idade">Idade</label>
+      <input
+        class="form-control"
+        type="number"
+        name="filtro-idade"
+        id="filtro-idade"
+        oninput="setTimeout(submitFiltroForm('{{csrf_token}}'),2000)"
+      />
+    </div>
+  </div>
+</form>
+
+<script>
+  //prettier-ignore
+  function submitFiltroForm(token) {
+    nome = $("#filtro-nome").val();
+    cpf = $("#filtro-cpf").val();
+    dataDeNascimento = $("#filtro-data-nascimento").val();
+    idade = $("#filtro-idade").val();
+
+    $.ajax({
+      url: "/filtrar-dados-tabela",
+      type: "get",
+      data: {
+        'nome': nome,
+        'cpf': cpf,
+        'dataDeNascimento': dataDeNascimento,
+        'idade': idade,
+      },
+      headers: { "X-CSRFToken": token },
+      success: function (data) {
+        $("#pessoas-table-container").html(data);
+      },
+    });
+  }
+</script>

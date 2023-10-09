@@ -95,3 +95,12 @@ def deletarPessoa(request, pk):
         Pessoa.objects.get(id=pk).delete()
         return HttpResponse(status=status.HTTP_200_OK)
     return HttpResponse(status=status.HTTP_404_NOT_FOUND)
+
+
+def filtrarDadosTabela(request):
+    nome = request.GET['nome']
+    cpf = request.GET['cpf']
+    dataDeNascimento = request.GET['dataDeNascimento']
+    idade = request.GET['idade']
+
+    pass
