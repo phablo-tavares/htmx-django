@@ -1,0 +1,23 @@
+<tr id="row_pessoa_{{pessoa.id}}">
+  <td>{{pessoa.nome}}</td>
+  <td>{{pessoa.cpf}}</td>
+  <td>{{pessoa.dataDeNascimento}}</td>
+  <td>{{pessoa.idade}}</td>
+  <td>
+    <button
+      class="btn btn-sm btn-outline-warning"
+      hx-get="formAtualizarPessoa/{{pessoa.id}}"
+      hx-target="#atualizar-pessoa-form-container"
+      hx-swap="innerHTML"
+    >
+      Editar
+    </button>
+    <button
+      class="btn btn-sm btn-outline-danger"
+      hx-delete="deletar-pessoa/{{pessoa.id}}"
+      hx-on='htmx:afterRequest: $("#row_pessoa_{{pessoa.id}}").remove()'
+    >
+      Deletar
+    </button>
+  </td>
+</tr>

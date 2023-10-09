@@ -1,0 +1,19 @@
+<form hx-post="{% url 'adicionar-pessoa' %}" hx-target="#table-body" hx-swap="beforeend">
+  <div class="row">
+    <div class="col-4 col-md-3">
+      <label for="{{form.nome.id_for_label}}">{{form.nome.label}}</label>
+      {{form.nome}}
+    </div>
+    <div class="col-4 col-md-3">
+      <label for="{{form.cpf.id_for_label}}">{{form.cpf.label}}</label>
+      {{form.cpf}}
+    </div>
+    <div class="col-4 col-md-3">
+      <label for="{{form.dataDeNascimento.id_for_label}}">{{form.dataDeNascimento.label}}</label>
+      {{form.dataDeNascimento}}
+    </div>
+    <div class="col-3 align-self-end">
+      <button class="btn btn-primary" type="submit">Salvar</button>
+    </div>
+  </div>
+</form>
